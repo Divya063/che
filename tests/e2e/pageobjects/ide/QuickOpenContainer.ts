@@ -51,6 +51,7 @@ export class QuickOpenContainer {
         Logger.debug('QuickOpenContainer.typeAndSelectSuggestion');
 
         await this.driverHelper.type(By.css('div.monaco-inputbox  input.input'), text);
+        await this.driverHelper.wait(500);
         await this.clickOnContainerItem(suggestedText);
     }
 

@@ -87,12 +87,12 @@ suite('Openshift connector user story', async () => {
     await quickOpenContainer.clickOnContainerItem('Credentials');
     await quickOpenContainer.clickOnContainerItem(`https://${openshiftIP}`);
     await quickOpenContainer.clickOnContainerItem('$(plus) Add new user...');
-    await quickOpenContainer.typeAndSelectSuggestion('developer', `Provide Username ${provideAuthenticationSuffix}`);
-    await quickOpenContainer.typeAndSelectSuggestion('123', `Provide Password ${provideAuthenticationSuffix}`);
+    await quickOpenContainer.typeAndSelectSuggestion(TestConstants.TS_LOGIN_NAME_OF_OPENSHIFT_REGULAR_USER, `Provide Username ${provideAuthenticationSuffix}`);
+    await quickOpenContainer.typeAndSelectSuggestion(TestConstants.TS_PASSWORD_OF_OPENSHIFT_REGULAR_USER, `Provide Password ${provideAuthenticationSuffix}`);
   });
 
   test('Create new component with application', async () => {
-    await openshiftPlugin.invokeContextMenuCommandOnItem('myproject', OpenshiftContextMenuItems.NewComponent);
+    await openshiftPlugin.invokeContextMenuCommandOnItem(TestConstants.TS_TEST_OPENSHIFT_PLUGIN_PROJECT, OpenshiftContextMenuItems.NewComponent);
     await quickOpenContainer.clickOnContainerItem('$(plus) Create new Application...');
     await quickOpenContainer.typeAndSelectSuggestion('node-js-app', `Provide Application name ${selectSugestionSuffix}` );
     await quickOpenContainer.clickOnContainerItem('Workspace Directory');
@@ -101,7 +101,7 @@ suite('Openshift connector user story', async () => {
     await quickOpenContainer.typeAndSelectSuggestion('component-node-js', `Provide Component name ${selectSugestionSuffix}`);
     await quickOpenContainer.clickOnContainerItem('nodejs');
     await quickOpenContainer.clickOnContainerItem('latest');
-    await openshiftPlugin.clickOnItemInTree('myproject');
+    await openshiftPlugin.clickOnItemInTree(TestConstants.TS_TEST_OPENSHIFT_PLUGIN_PROJECT);
     await openshiftPlugin.clickOnItemInTree('node-js-app');
     await openshiftPlugin.clickOnItemInTree('component-node-js');
   });
